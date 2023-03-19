@@ -18,6 +18,11 @@ public class Producto {
     public Producto() {
     }
 
+    public Producto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    
+
     public Producto(String codigoBarras, String nombre, String marca, double precioCompra, double precioVenta, int existencias, int estatus) {
         this.codigoBarras = codigoBarras;
         this.nombre = nombre;

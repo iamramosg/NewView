@@ -4,36 +4,41 @@
  */
 package org.utl.dsm.optik.model;
 
+import java.util.List;
+
 /**
  *
  * @author Gabriel
  */
 public class PresupuestoLente {
     private int idPresupuestoLentes;
-    private Presupuesto idPresupuesto;    
+    private Presupuesto presupuesto;    
     private int alturaOblea;
-    private TipoMica idTipoMica;
-    private Material idMaterial;
-    private Armazon idArmazon;  
+    private TipoMica tipoMica;
+    private Material material;
+    private Armazon armazon;  
+    private List<Tratamiento> listTratamientos;
 
     public PresupuestoLente() {
     }
 
-    public PresupuestoLente(Presupuesto idPresupuesto, int alturaOblea, TipoMica idTipoMica, Material idMaterial, Armazon idArmazon) {
-        this.idPresupuesto = idPresupuesto;
+    public PresupuestoLente(Presupuesto presupuesto, int alturaOblea, TipoMica tipoMica, Material material, Armazon armazon, List<Tratamiento> listTratamientos) {
+        this.presupuesto = presupuesto;
         this.alturaOblea = alturaOblea;
-        this.idTipoMica = idTipoMica;
-        this.idMaterial = idMaterial;
-        this.idArmazon = idArmazon;
+        this.tipoMica = tipoMica;
+        this.material = material;
+        this.armazon = armazon;
+        this.listTratamientos = listTratamientos;
     }
 
-    public PresupuestoLente(int idPresupuestoLentes, Presupuesto idPresupuesto, int alturaOblea, TipoMica idTipoMica, Material idMaterial, Armazon idArmazon) {
+    public PresupuestoLente(int idPresupuestoLentes, Presupuesto presupuesto, int alturaOblea, TipoMica tipoMica, Material material, Armazon armazon, List<Tratamiento> listTratamientos) {
         this.idPresupuestoLentes = idPresupuestoLentes;
-        this.idPresupuesto = idPresupuesto;
+        this.presupuesto = presupuesto;
         this.alturaOblea = alturaOblea;
-        this.idTipoMica = idTipoMica;
-        this.idMaterial = idMaterial;
-        this.idArmazon = idArmazon;
+        this.tipoMica = tipoMica;
+        this.material = material;
+        this.armazon = armazon;
+        this.listTratamientos = listTratamientos;
     }
 
     public int getIdPresupuestoLentes() {
@@ -44,12 +49,12 @@ public class PresupuestoLente {
         this.idPresupuestoLentes = idPresupuestoLentes;
     }
 
-    public Presupuesto getIdPresupuesto() {
-        return idPresupuesto;
+    public Presupuesto getPresupuesto() {
+        return presupuesto;
     }
 
-    public void setIdPresupuesto(Presupuesto idPresupuesto) {
-        this.idPresupuesto = idPresupuesto;
+    public void setPresupuesto(Presupuesto presupuesto) {
+        this.presupuesto = presupuesto;
     }
 
     public int getAlturaOblea() {
@@ -60,34 +65,44 @@ public class PresupuestoLente {
         this.alturaOblea = alturaOblea;
     }
 
-    public TipoMica getIdTipoMica() {
-        return idTipoMica;
+    public TipoMica getTipoMica() {
+        return tipoMica;
     }
 
-    public void setIdTipoMica(TipoMica idTipoMica) {
-        this.idTipoMica = idTipoMica;
+    public void setTipoMica(TipoMica tipoMica) {
+        this.tipoMica = tipoMica;
     }
 
-    public Material getIdMaterial() {
-        return idMaterial;
+    public Material getMaterial() {
+        return material;
     }
 
-    public void setIdMaterial(Material idMaterial) {
-        this.idMaterial = idMaterial;
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
-    public Armazon getIdArmazon() {
-        return idArmazon;
+    public Armazon getArmazon() {
+        return armazon;
     }
 
-    public void setIdArmazon(Armazon idArmazon) {
-        this.idArmazon = idArmazon;
+    public void setArmazon(Armazon armazon) {
+        this.armazon = armazon;
+    }
+
+    public List<Tratamiento> getListTratamientos() {
+        return listTratamientos;
+    }
+
+    public void setListTratamientos(List<Tratamiento> listTratamientos) {
+        this.listTratamientos = listTratamientos;
     }
 
     @Override
     public String toString() {
-        return "PresupuestoLente{" + "idPresupuestoLentes=" + idPresupuestoLentes + ", idPresupuesto=" + idPresupuesto + ", alturaOblea=" + alturaOblea + ", idTipoMica=" + idTipoMica + ", idMaterial=" + idMaterial + ", idArmazon=" + idArmazon + '}';
+        return "PresupuestoLente{" + "idPresupuestoLentes=" + idPresupuestoLentes + ", presupuesto=" + presupuesto + ", alturaOblea=" + alturaOblea + ", tipoMica=" + tipoMica + ", material=" + material + ", armazon=" + armazon + ", listTratamientos=" + listTratamientos + '}';
     }
+
+    
     
     
 }

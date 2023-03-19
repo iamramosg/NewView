@@ -10,20 +10,20 @@ package org.utl.dsm.optik.model;
  */
 public class Presupuesto {
     private int idPresupuesto;
-    private ExamenVista idExamenVista;
+    private ExamenVista examenVista;
     private String clave;
 
     public Presupuesto() {
     }
 
-    public Presupuesto(ExamenVista idExamenVista, String clave) {
-        this.idExamenVista = idExamenVista;
+    public Presupuesto(ExamenVista examenVista, String clave) {
+        this.examenVista = examenVista;
         this.clave = clave;
     }
 
-    public Presupuesto(int idPresupuesto, ExamenVista idExamenVista, String clave) {
+    public Presupuesto(int idPresupuesto, ExamenVista examenVista, String clave) {
         this.idPresupuesto = idPresupuesto;
-        this.idExamenVista = idExamenVista;
+        this.examenVista = examenVista;
         this.clave = clave;
     }
 
@@ -35,12 +35,12 @@ public class Presupuesto {
         this.idPresupuesto = idPresupuesto;
     }
 
-    public ExamenVista getIdExamenVista() {
-        return idExamenVista;
+    public ExamenVista getExamenVista() {
+        return examenVista;
     }
 
-    public void setIdExamenVista(ExamenVista idExamenVista) {
-        this.idExamenVista = idExamenVista;
+    public void setExamenVista(ExamenVista examenVista) {
+        this.examenVista = examenVista;
     }
 
     public String getClave() {
@@ -53,8 +53,10 @@ public class Presupuesto {
 
     @Override
     public String toString() {
-        return "Presupuesto{" + "idPresupuesto=" + idPresupuesto + ", idExamenVista=" + idExamenVista + ", clave=" + clave + '}';
+        return "Presupuesto{" + "idPresupuesto=" + idPresupuesto + ", examenVista=" + examenVista + ", clave=" + clave + '}';
     }
+
+   
     
     
  

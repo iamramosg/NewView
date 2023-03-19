@@ -10,22 +10,22 @@ package org.utl.dsm.optik.model;
  */
 public class LenteContacto {
     private int idLenteContacto;
-    private Producto idProducto;
+    private Producto producto;
     private int keratometria;
     private String fotografia;
 
     public LenteContacto() {
     }
-    
-    public LenteContacto(Producto idProducto, int keratometria, String fotografia) {
-        this.idProducto = idProducto;
+
+    public LenteContacto(Producto producto, int keratometria, String fotografia) {
+        this.producto = producto;
         this.keratometria = keratometria;
         this.fotografia = fotografia;
     }
 
-    public LenteContacto(int idLenteContacto, Producto idProducto, int keratometria, String fotografia) {
+    public LenteContacto(int idLenteContacto, Producto producto, int keratometria, String fotografia) {
         this.idLenteContacto = idLenteContacto;
-        this.idProducto = idProducto;
+        this.producto = producto;
         this.keratometria = keratometria;
         this.fotografia = fotografia;
     }
@@ -38,12 +38,12 @@ public class LenteContacto {
         this.idLenteContacto = idLenteContacto;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getKeratometria() {
@@ -64,7 +64,7 @@ public class LenteContacto {
 
     @Override
     public String toString() {
-        return "LenteContacto{" + "idLenteContacto=" + idLenteContacto + ", idProducto=" + idProducto + ", keratometria=" + keratometria + ", fotografia=" + fotografia + '}';
+        return "LenteContacto{" + "idLenteContacto=" + idLenteContacto + ", producto=" + producto + ", keratometria=" + keratometria + ", fotografia=" + fotografia + '}';
     }
     
     

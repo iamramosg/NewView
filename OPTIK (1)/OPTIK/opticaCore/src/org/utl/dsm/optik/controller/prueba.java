@@ -7,15 +7,20 @@ package org.utl.dsm.optik.controller;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import org.utl.dsm.optik.db.ConexionMySQL;
+import org.utl.dsm.optik.db.ConexionMongoDB;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import org.bson.Document;
+import org.utl.dsm.optik.model.Alumno;
 import org.utl.dsm.optik.model.Empleado;
 import org.utl.dsm.optik.model.Persona;
 import org.utl.dsm.optik.model.Usuario;
 import org.utl.dsm.optik.model.Producto;
 import org.utl.dsm.optik.model.Armazon;
 import org.utl.dsm.optik.model.Cliente;
+import org.utl.dsm.optik.model.Evaluacion;
+import org.utl.dsm.optik.model.ExamenVista;
 
 /**
  *
@@ -23,21 +28,36 @@ import org.utl.dsm.optik.model.Cliente;
  */
 public class prueba {
 
-    public static void main(String[] args) {
-        probarCatalago("lente");
+    public static void main(String[] args) throws Exception {
+        probarScript("skin", "insu");
+        //mostrar("21000012");
+        //insertarAlumno();
+        //probarCatalago(1);
         //probarInseratar();
         //probarAcceso();
         //probarConexion();
+        //ConexionMongoDB objCo = new ConexionMongoDB();
+        //objCo.open();
+
     }
-    public static void probarCatalago(String lente){
+    public static void probarScript(String x, String y){
+        ControllerRegresion cr = new ControllerRegresion();
+        try{
+            cr.callPythonScript(x, y);
+        }catch(Exception e){
+            System.out.println("error: " + e.getMessage());
+        }
+    }
+
+    public static void probarCatalago(int filtro) {
         // Paso 1 invocar el controlador 
-        ControllerVenta objCe = new ControllerVenta();
+        ControllerVentaLC objve= new ControllerVentaLC();
         try {
             // Paso 2 invocar el metodo
-            List<Producto> productos =  objCe.getAll(lente);
+            List<ExamenVista> examenVistas = objve.getAllExamen(filtro);
             // recorrer y mostrar los resultados
-            for(int i = 0; 1 < productos.size(); i++){
-                System.out.println(productos.get(i).toString());
+            for (int i = 0; i <examenVistas.size(); i++) {
+                System.out.println(examenVistas.get(i).toString());
             }
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,8 +74,8 @@ public class prueba {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void probarInsert(){
+
+    public static void probarInsert() {
         // Paso 1 genero un objeto de persona 
         Producto p = new Producto();
         p.setCodigoBarras("5678");
@@ -65,7 +85,6 @@ public class prueba {
         p.setPrecioVenta(140);
         p.setExistencias(20);
 
-        
         // Crear un onjeto de usuario 
         Armazon a = new Armazon();
         a.setModelo("x");
@@ -74,9 +93,7 @@ public class prueba {
         a.setDescripcion("Hola");
         a.setFotografia("5678900vbvgb");
         a.setProducto(p);
-        
-        
-        
+
         // creamos una clase del objeto controllador empleado 
         ControllerArmazon objAr = new ControllerArmazon();
         try {
@@ -85,11 +102,29 @@ public class prueba {
             ex.printStackTrace();
         }
         System.out.println(a.toString());
-        
-        
+
     }
-    
-    public static void probarUpdate(){
+
+    public static void insertarAlumno() throws Exception {
+        Evaluacion e = new Evaluacion();
+        ControllerAlumno objAl = new ControllerAlumno();
+
+        e.setCalificacion(9);
+        e.setFecha("2023-03-12");
+        e.setMateria("Matematicas");
+        e.setComentario("Buen trabajo");
+        e.setSeleccion(2);
+
+        try {
+            objAl.insertar(e);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(e.toString());
+
+    }
+
+    public static void probarUpdate() {
         // Paso 1 genero un objeto de persona 
         Persona p = new Persona();
         p.setIdPersona(26);
@@ -107,19 +142,16 @@ public class prueba {
         p.setTelcasa("12");
         p.setTelmovil("123");
         p.setEmail("ponce@gmail.com");
-        
+
         // Crear un onjeto de usuario 
         Cliente u = new Cliente();
         u.setIdCliente(1);
         u.setPersona(p);
-        
+
 //        Empleado emp = new Empleado();
 //        emp.setIdEmpleado(4);
 //        emp.setPersona(p);
 //        emp.setUsuario(u);
-        
-        
-        
         // creamos una clase del objeto controllador empleado 
         ControllerCliente objCE = new ControllerCliente();
         try {
@@ -128,25 +160,24 @@ public class prueba {
             ex.printStackTrace();
         }
         System.out.println(u.toString());
-        
-        
+
     }
-    public static void probarAcceso(){
+
+    public static void probarAcceso() {
         Usuario u = new Usuario();
         u.setNombre("1");
         u.setContrasenia("1");
         ControllerAcceso ca = new ControllerAcceso();
-        try{
+        try {
             Empleado e = ca.entrar(u);
             e.toString();
             System.out.println("Acceso Concedido");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("Acceso Denegado");
         }
     }
-    
-    
-    public static void probarInseratar(){
+
+    public static void probarInseratar() {
         // Paso 1 genero un objeto de persona 
         Persona p = new Persona();
         p.setNombre("Xiomara");
@@ -163,19 +194,17 @@ public class prueba {
         p.setTelcasa("12");
         p.setTelmovil("123");
         p.setEmail("ponce@gmail.com");
-        
+
         // Crear un onjeto de usuario 
         Usuario u = new Usuario();
         u.setNombre("PonceS");
         u.setContrasenia("1234");
         u.setRol("Gerente");
-        
+
         Empleado emp = new Empleado();
         emp.setPersona(p);
         emp.setUsuario(u);
-        
-        
-        
+
         // creamos una clase del objeto controllador empleado 
         ControllerEmpleado objCE = new ControllerEmpleado();
         try {
@@ -184,7 +213,22 @@ public class prueba {
             ex.printStackTrace();
         }
         System.out.println(emp.toString());
-        
-        
+
+    }
+
+    public static void mostrar(String filtro) {
+        ControllerAlumno objAl = new ControllerAlumno();
+        List<Alumno> alumnos = objAl.buscarAlumnosPorMatricula(filtro);
+
+        for (Alumno alumno : alumnos) {
+            System.out.println("Nombre: " + alumno.getNombre());
+            System.out.println("Matrícula: " + alumno.getMatricula());
+            System.out.println("Fecha de nacimiento: " + alumno.getFechaNacimiento());
+            System.out.println("Materia: " + alumno.getEvaluacion().getMateria());
+            System.out.println("Calificación: " + alumno.getEvaluacion().getCalificacion());
+            System.out.println("Fecha de evaluación: " + alumno.getEvaluacion().getFecha());
+            System.out.println("Comentario: " + alumno.getEvaluacion().getComentario());
+            System.out.println();
+        }
     }
 }

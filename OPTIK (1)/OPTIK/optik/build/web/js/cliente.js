@@ -196,8 +196,6 @@ function Rbusqueda(){
         if(cliente.persona.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
                 cliente.persona.apellidoPaterno.toLowerCase().includes(busqueda.toLowerCase()) ||
                 cliente.persona.apellidoMaterno.toLowerCase().includes(busqueda.toLowerCase()) ||
-                cliente.persona.telcasa.includes(busqueda) ||
-                cliente.persona.telmovil.includes(busqueda) ||
                 cliente.persona.calle.toLowerCase().includes(busqueda.toLowerCase()) ||
                 cliente.persona.colonia.toLowerCase().includes(busqueda.toLowerCase()) ||
                 cliente.persona.ciudad.toLowerCase().includes(busqueda.toLowerCase()) ||

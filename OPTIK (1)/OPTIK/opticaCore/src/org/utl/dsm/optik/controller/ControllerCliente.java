@@ -14,11 +14,13 @@ import java.util.List;
 import org.utl.dsm.optik.model.Persona;
 import org.utl.dsm.optik.model.Cliente;
 
+
 /**
  *
  * @author iamra
  */
 public class ControllerCliente {
+    
     public int insertar(Cliente cliente) throws Exception{
         String query = "call insertarCliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int idPersonaG = 0;

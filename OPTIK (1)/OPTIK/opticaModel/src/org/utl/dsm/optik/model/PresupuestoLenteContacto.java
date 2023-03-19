@@ -10,22 +10,27 @@ package org.utl.dsm.optik.model;
  */
 public class PresupuestoLenteContacto {
     private int idPresupuestoLentesContacto;
-    private ExamenVista idExamenVista;
-    private LenteContacto idLenteContacto;
+    private LenteContacto LenteContacto;
     private String clave; 
+    private Presupuesto presupuesto;
 
-    public PresupuestoLenteContacto(ExamenVista idExamenVista, LenteContacto idLenteContacto, String clave) {
-        this.idExamenVista = idExamenVista;
-        this.idLenteContacto = idLenteContacto;
-        this.clave = clave;
+    public PresupuestoLenteContacto() {
     }
 
-    public PresupuestoLenteContacto(int idPresupuestoLentesContacto, ExamenVista idExamenVista, LenteContacto idLenteContacto, String clave) {
+    public PresupuestoLenteContacto(LenteContacto LenteContacto, String clave, Presupuesto presupuesto) {
+        this.LenteContacto = LenteContacto;
+        this.clave = clave;
+        this.presupuesto = presupuesto;
+    }
+
+    public PresupuestoLenteContacto(int idPresupuestoLentesContacto, LenteContacto LenteContacto, String clave, Presupuesto presupuesto) {
         this.idPresupuestoLentesContacto = idPresupuestoLentesContacto;
-        this.idExamenVista = idExamenVista;
-        this.idLenteContacto = idLenteContacto;
+        this.LenteContacto = LenteContacto;
         this.clave = clave;
+        this.presupuesto = presupuesto;
     }
+    
+    
 
     public int getIdPresupuestoLentesContacto() {
         return idPresupuestoLentesContacto;
@@ -35,20 +40,12 @@ public class PresupuestoLenteContacto {
         this.idPresupuestoLentesContacto = idPresupuestoLentesContacto;
     }
 
-    public ExamenVista getIdExamenVista() {
-        return idExamenVista;
+    public LenteContacto getLenteContacto() {
+        return LenteContacto;
     }
 
-    public void setIdExamenVista(ExamenVista idExamenVista) {
-        this.idExamenVista = idExamenVista;
-    }
-
-    public LenteContacto getIdLenteContacto() {
-        return idLenteContacto;
-    }
-
-    public void setIdLenteContacto(LenteContacto idLenteContacto) {
-        this.idLenteContacto = idLenteContacto;
+    public void setLenteContacto(LenteContacto LenteContacto) {
+        this.LenteContacto = LenteContacto;
     }
 
     public String getClave() {
@@ -59,9 +56,17 @@ public class PresupuestoLenteContacto {
         this.clave = clave;
     }
 
+    public Presupuesto getPresupuesto() {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(Presupuesto presupuesto) {
+        this.presupuesto = presupuesto;
+    }
+
     @Override
     public String toString() {
-        return "PresupuestoLenteContacto{" + "idPresupuestoLentesContacto=" + idPresupuestoLentesContacto + ", idExamenVista=" + idExamenVista + ", idLenteContacto=" + idLenteContacto + ", clave=" + clave + '}';
+        return "PresupuestoLenteContacto{" + "idPresupuestoLentesContacto=" + idPresupuestoLentesContacto + ", LenteContacto=" + LenteContacto + ", clave=" + clave + ", presupuesto=" + presupuesto + '}';
     }
     
     

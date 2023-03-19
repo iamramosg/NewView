@@ -51,6 +51,7 @@ async function encriptar(texto) {
     const encoder = new TextEncoder(); //Invocamos la clase q convierte un String en bytes
     const data = encoder.encode(texto);//Hace la conversión
     const hash = await crypto.subtle.digest('SHA-256', data); //crypto toma los bytes y los encripta, devuelve un buffer
+    //const hash = "4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a";
     const hashArray = Array.from(new Uint8Array(hash)); // convierte el buffer en un arreglo de bytes
     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join(''); // convierte los bytes en string
     return hashHex;

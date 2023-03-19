@@ -117,7 +117,7 @@
                 </div>  
                 <div class="row">
                     <div class="col-4">
-                        <button type="button" class="btn btn-outline-secondary m-3" onclick="getAllM()">Activos</button>
+                        <button type="button" class="btn btn-outline-secondary m-3" onclick="generarVenta()">Venta</button>
                         <button type="button" class="btn btn-outline-secondary m-3" onclick="getAllInactivosM()">Inactivos</button>
                     </div>
                     <div class="col-8">
@@ -143,7 +143,30 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <div>
+
+                    <table class="sc-table">
+                        <thead>
+                            <tr>
+                                <td>PRODUCTO</td>
+                                <td>PRECIO</td>
+                                <td>CANTIDAD</td>
+                                <td>DESCUENTO</td>
+                                <td style="display: none;">ID</td>
+                            </tr>
+                        </thead>
+                        <tbody id="tbProducto2">
+
+                        </tbody>
+                    </table>
+                    
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label">Total:</label><br>
+                        <input type="number" id="txtTotal" class="form-control" disabled><br>
+                    </div> 
+                </div>
         </div>
 
     </body>

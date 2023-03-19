@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,7 +69,9 @@ public class ControllerVenta {
         try {
             connection.setAutoCommit(false);
             stmt = connection.createStatement();
-            String query1 = "INSERT INTO venta(idEmpleado, clave) VALUES("+dvp.getVenta().getEmpleado().getIdEmpleado()+","+dvp.getVenta().getClave()+");";
+            //String query1 = "INSERT INTO venta(idEmpleado, clave) VALUES("+dvp.getVenta().getEmpleado().getIdEmpleado()+","+dvp.getVenta().getClave()+");";
+            String query1 = "INSERT INTO venta(idEmpleado, clave) VALUES(" + dvp.getVenta().getEmpleado().getIdEmpleado() + ",'" + dvp.getVenta().getClave() + "');";
+
             stmt.execute(query1);
             
             String query2 = "SELECT LAST_INSERT_ID();";
@@ -84,8 +87,8 @@ public class ControllerVenta {
                         +dvp.getListaVP().get(i).getProducto().getIdProducto()+","
                         +dvp.getListaVP().get(i).getCantidad()+","
                         +dvp.getListaVP().get(i).getPrecioUnitario()+","
-                        +dvp.getListaVP().get(i).getPrecioUnitario()+","
                         +dvp.getListaVP().get(i).getDescuento()+");";
+                stmt.execute(query3);
             }
             connection.commit();
             connection.setAutoCommit(true);
@@ -112,5 +115,6 @@ public class ControllerVenta {
         
         return r;
     }
+    
     
 }

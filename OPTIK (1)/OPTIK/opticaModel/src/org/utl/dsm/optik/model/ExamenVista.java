@@ -11,28 +11,28 @@ package org.utl.dsm.optik.model;
 public class ExamenVista {
     private int idExamenVista;
     private String clave;
-    private Empleado idEmpleado;
-    private Cliente idCliente;
-    private Graduacion idGraduacion;
+    private Empleado empleado;
+    private Cliente Cliente;
+    private Graduacion graduacion;
     private String fecha;
 
     public ExamenVista() {
     }
 
-    public ExamenVista(String clave, Empleado idEmpleado, Cliente idCliente, Graduacion idGraduacion, String fecha) {
+    public ExamenVista(String clave, Empleado empleado, Cliente Cliente, Graduacion graduacion, String fecha) {
         this.clave = clave;
-        this.idEmpleado = idEmpleado;
-        this.idCliente = idCliente;
-        this.idGraduacion = idGraduacion;
+        this.empleado = empleado;
+        this.Cliente = Cliente;
+        this.graduacion = graduacion;
         this.fecha = fecha;
     }
 
-    public ExamenVista(int idExamenVista, String clave, Empleado idEmpleado, Cliente idCliente, Graduacion idGraduacion, String fecha) {
+    public ExamenVista(int idExamenVista, String clave, Empleado empleado, Cliente Cliente, Graduacion graduacion, String fecha) {
         this.idExamenVista = idExamenVista;
         this.clave = clave;
-        this.idEmpleado = idEmpleado;
-        this.idCliente = idCliente;
-        this.idGraduacion = idGraduacion;
+        this.empleado = empleado;
+        this.Cliente = Cliente;
+        this.graduacion = graduacion;
         this.fecha = fecha;
     }
 
@@ -52,28 +52,28 @@ public class ExamenVista {
         this.clave = clave;
     }
 
-    public Empleado getIdEmpleado() {
-        return idEmpleado;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setIdEmpleado(Empleado idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return Cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente Cliente) {
+        this.Cliente = Cliente;
     }
 
-    public Graduacion getIdGraduacion() {
-        return idGraduacion;
+    public Graduacion getGraduacion() {
+        return graduacion;
     }
 
-    public void setIdGraduacion(Graduacion idGraduacion) {
-        this.idGraduacion = idGraduacion;
+    public void setGraduacion(Graduacion graduacion) {
+        this.graduacion = graduacion;
     }
 
     public String getFecha() {
@@ -86,8 +86,6 @@ public class ExamenVista {
 
     @Override
     public String toString() {
-        return "ExamenVista{" + "idExamenVista=" + idExamenVista + ", clave=" + clave + ", idEmpleado=" + idEmpleado + ", idCliente=" + idCliente + ", idGraduacion=" + idGraduacion + ", fecha=" + fecha + '}';
+        return "ExamenVista{" + "idExamenVista=" + idExamenVista + ", clave=" + clave + ", empleado=" + empleado + ", Cliente=" + Cliente + ", graduacion=" + graduacion + ", fecha=" + fecha + '}';
     }
-    
-    
 }

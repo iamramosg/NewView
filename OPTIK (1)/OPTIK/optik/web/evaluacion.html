@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Evaluaci&oacute;n</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="style/form.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="style/sweetalert2/sweetalert2.css">
+    </head>
+
+    <body>
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <div class="tarjetas-scroll">
+                        <div id="tarjetas-container">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-9 register-right">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Evaluaci&oacute;n</h3>
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control" id="slcAlumno">
+                                            <option class="hidden"  selected disabled>Selecciona un Alumno:</option>
+                                            <option >Selecciona un Alumno</option>
+                                            <option value="21000006">Gabriel</option>
+                                            <option value="21000012">Lizbeth</option>
+                                            <option value="21000381">&Aacute;ngel</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtMateria" class="form-control" placeholder="Materia *"  />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" id="txtCalificacion" class="form-control" placeholder="Calificaci&oacute;n *"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" id="txtFecha" class="form-control" placeholder="Fecha *"  />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" id="txtComentario" class="form-control" placeholder="Comentario"  />
+                                    </div>                            
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-outline-info m-3 " onclick="insertarE()">Guardar</button>
+                                    <button type="submit" class="btn btn-outline-info m-3 " onclick="getAllA()">Reporte</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    <script src="js/alumno.js" type="text/javascript"></script>
+    <script src="style/sweetalert2/sweetalert2.js" type="text/javascript"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>
