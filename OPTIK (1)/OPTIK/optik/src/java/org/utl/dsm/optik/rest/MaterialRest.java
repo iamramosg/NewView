@@ -1,4 +1,3 @@
-
 package org.utl.dsm.optik.rest;
 
 import com.google.gson.Gson;
@@ -23,7 +22,8 @@ import org.utl.dsm.optik.model.Material;
  * @author iamra
  */
 @Path("restoptik")
-public class MaterialRest extends Application{
+public class MaterialRest extends Application {
+
     @Path("insertarMaterial")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,6 +53,7 @@ public class MaterialRest extends Application{
             return Response.status(Response.Status.BAD_REQUEST).entity(Out).build();
         }
     }
+
     @Path("updateMaterial")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -80,7 +81,8 @@ public class MaterialRest extends Application{
             String Out = "{\"error\":'Acceso no valido'}";
             return Response.status(Response.Status.BAD_REQUEST).entity(Out).build();
         }
-    } 
+    }
+
     @Path("getAllMaterial")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,11 +110,12 @@ public class MaterialRest extends Application{
             String Out = "{\"error\":'Acceso no valido'}";
             return Response.status(Response.Status.BAD_REQUEST).entity(Out).build();
         }
-    }    
+    }
+
     @Path("eliminarMaterial")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response eliminarMaterial(@FormParam ("datosMaterial") @DefaultValue ("") String datosMaterial){
+    public Response eliminarMaterial(@FormParam("datosMaterial") @DefaultValue("") String datosMaterial) {
         Gson gson = new Gson();
         Material material = new Material();
         material = gson.fromJson(datosMaterial, Material.class);
@@ -121,15 +124,16 @@ public class MaterialRest extends Application{
         try {
             objM.eliminar(material);
         } catch (Exception ex) {
-            out = "{\"error\":" + ex.toString()+"}";
+            out = "{\"error\":" + ex.toString() + "}";
         }
         out = gson.toJson(material);
         return Response.status(Response.Status.OK).entity(out).build();
-    }  
+    }
+
     @Path("activarMaterial")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response activarMaterial(@FormParam ("datosMaterial") @DefaultValue ("") String datosMaterial){
+    public Response activarMaterial(@FormParam("datosMaterial") @DefaultValue("") String datosMaterial) {
         Gson gson = new Gson();
         Material material = new Material();
         material = gson.fromJson(datosMaterial, Material.class);
@@ -138,10 +142,28 @@ public class MaterialRest extends Application{
         try {
             objM.activar(material);
         } catch (Exception ex) {
-            out = "{\"error\":" + ex.toString()+"}";
+            out = "{\"error\":" + ex.toString() + "}";
         }
         out = gson.toJson(material);
         return Response.status(Response.Status.OK).entity(out).build();
-    }    
-    
+    }
+
+    @Path("getAllM")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllM(@FormParam("estatus") @DefaultValue("1") String estatus) {
+        String out = "";
+        Gson gson = new Gson();
+        try {
+            ControllerMaterial objCA = new ControllerMaterial();
+            List<Material> materiales;
+            materiales = objCA.getAll(estatus);
+            out = gson.toJson(materiales);
+
+        } catch (Exception ex) {
+            out = "{\"error\": \"" + ex.toString() + "\"}";
+        }
+        return Response.status(Response.Status.OK).entity(out).build();
+    }
+
 }
