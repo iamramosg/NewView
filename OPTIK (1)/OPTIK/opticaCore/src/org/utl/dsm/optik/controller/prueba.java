@@ -29,7 +29,7 @@ import org.utl.dsm.optik.model.ExamenVista;
 public class prueba {
 
     public static void main(String[] args) throws Exception {
-        probarScript("skin", "insu");
+
         //mostrar("21000012");
         //insertarAlumno();
         //probarCatalago(1);
@@ -40,14 +40,7 @@ public class prueba {
         //objCo.open();
 
     }
-    public static void probarScript(String x, String y){
-        ControllerRegresion cr = new ControllerRegresion();
-        try{
-            cr.callPythonScript(x, y);
-        }catch(Exception e){
-            System.out.println("error: " + e.getMessage());
-        }
-    }
+
 
     public static void probarCatalago(int filtro) {
         // Paso 1 invocar el controlador 
