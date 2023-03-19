@@ -42,7 +42,7 @@ function cargarTablaClientes(data) {
         contenido += "<td>" + nc + "</td>";
         contenido += "<td>" + dc + "</td>";
         contenido += "<td>" + cliente.persona.email + "</td>";
-        contenido += `<td class='text-end'><button type='button' class='btn btn-outline-success m-3 ms-auto' onclick='getAllExamenVista()'>Agregar</button></td>`;
+        contenido += `<td class='text-end'><button type='button' class='btn btn-outline-success m-3 ms-auto' onclick='getAllExamenVista(); getAllArmazon(); getAllMateriales(); getAllTipoMica();'>Agregar</button></td>`;
         //cuando le das al boton de arriba manda a llamar a getAllExamenVista
         contenido += "</tr>";
     });
@@ -69,7 +69,16 @@ function getAllExamenVista() {
                 } else {
                     examenesVista = data;
                     console.log(examenesVista);
-                    //pon que quieres que haga con la lista de los examenes de vista 
+                    // Obtener el select del HTML
+                    const selectExamen = document.getElementById("slcExamenVista");
+                    
+                    //Iterar sobre los objetos y agregar opciones al select 
+                    examenesVista.forEach(examen =>{
+                        const option = document.createElement("option");
+                        option.value = JSON.stringify(examen);
+                        option.text = examen.fecha;
+                        selectExamen.appendChild(option);
+                    });
                 }
             });
 }
@@ -88,6 +97,14 @@ function getAllTipoMica() {
                     tipoMicas = data;
                     console.log(tipoMicas);
                     //pon que quieres que haga con la lista de tipo micas
+                    const selectMica = document.getElementById("slcTipoMica");
+                    
+                    tipoMicas.forEach(mica =>{
+                        const option = document.createElement("option");
+                        option.value = JSON.stringify(mica);
+                        option.text = mica.nombre;
+                        selectMica.appendChild(option);
+                    });
                 }
             });
 }
@@ -111,7 +128,15 @@ function getAllArmazon() {
                 } else {
                     armazones = data;
                     console.log(armazones);
-                     //pon que quieres que haga con la lista de armazones
+                     
+                     const selectArmazon = document.getElementById("slcArmazon");
+                     
+                     armazones.forEach(armazon =>{
+                         const option = document.createElement("option");
+                         option.value = JSON.stringify(armazon);
+                         option.text = armazon.producto.nombre;
+                         selectArmazon.appendChild(option);
+                     });
                 }
             });
 }
@@ -135,7 +160,7 @@ function getAllTratamiento() {
                 } else {
                     tratamientos = data;
                     console.log(tratamientos);
-                     //pon que quieres que haga con la lista de tratamientos
+                    
                 }
             });
 }
@@ -159,7 +184,14 @@ function getAllMateriales() {
                 } else {
                     materiales = data;
                     console.log(materiales);
-                     //pon que quieres que haga con la lista de materiales
+                    const selectMaterial = document.getElementById("slcMaterial");
+                    
+                    materiales.forEach(material =>{
+                        const option = document.createElement("option");
+                        option.value = JSON.stringify(material);
+                        option.text = material.nombre;
+                        selectMaterial.appendChild(option);
+                    });
                 }
             });
 }
