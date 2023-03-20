@@ -356,12 +356,28 @@ function agregarVenta() {
 }
 
 function calcularPrecio() {
+
+    let input = document.getElementById("txtDescuento");
+    let c = document.getElementById("txtCantidad");
+    let valor = input.value; // Eliminamos los espacios en blanco al principio y al final del valor
+    if (valor === "") {
+        valor = 0; // Si el valor es una cadena vacía, lo establecemos como 0
+    }
+    valor = (100 - parseInt(valor))/100;
+
     // Suma de tipomica, material, armazón, tratamiento segun jonathan
     let result = materialSeleccionado.precioVenta + micaSeleccionada.precioVenta + armazonSeleccionado.producto.precioVenta;
 
     for (var i = 0; i < tratamientosSeleccionados.length; i++) {
         result += tratamientosSeleccionados[i].precioVenta;
     }
+    
+    let valor2 = c.value; // Eliminamos los espacios en blanco al principio y al final del valor
+    if (valor2 === "") {
+        valor2 = 1; // Si el valor es una cadena vacía, lo establecemos como 0
+    }
+    
+    result = (result * valor)*parseInt(valor2);
     return result;
 }
 
