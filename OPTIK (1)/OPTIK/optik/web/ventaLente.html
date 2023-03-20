@@ -123,9 +123,28 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                    
+                <div class="row" id="contenedorTratamientos">
+
                 </div>
+                <div class="container-fluid row">
+                    <div class="col">
+                        <label class="form-label" >Cantidad:</label><br>
+                        <input type="text" id="txtCantidad" class="form-control"><br>
+                    </div>
+<!--                    <div class="col">
+                        <label class="form-label" >Costo: </label><br>
+                        <input type="text" id="txtCosto" class="form-control"><br>
+                    </div>-->
+                    <div class="col">
+                        <label class="form-label" >Descuento: </label><br>
+                        <input type="text" id="txtDescuento" class="form-control"><br>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" >Altura Oblea: </label><br>
+                        <input type="text" id="txtOblea" class="form-control"><br>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-danger m-3 " onclick="agregarVenta()">Agregar</button>
                 <div>
 
                     <table class="sc-table">
@@ -149,7 +168,8 @@
                     <center>
                         <label class="form-label">Total:</label><br>
                         <input type="number" id="txtTotal" class="form-control" disabled><br>
-                        <button type="button" class="btn btn-outline-danger m-3 " onclick="generarVentaLente()">Guardar</button>
+                        <button type="button" class="btn btn-outline-danger m-3 " onclick="realizarVenta()">Guardar</button>
+                        
                     </center>
                 </div>
             </div>

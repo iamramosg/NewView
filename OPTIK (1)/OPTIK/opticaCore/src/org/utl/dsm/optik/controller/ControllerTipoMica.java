@@ -41,6 +41,7 @@ public class ControllerTipoMica {
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             TipoMica tm = new TipoMica();
+            tm.setIdTipoMica(rs.getInt("idTipoMica"));
             tm.setNombre(rs.getString("nombre"));
             tm.setPrecioCompra(rs.getFloat("precioCompra"));
             tm.setPrecioVenta(rs.getFloat("precioVenta"));
