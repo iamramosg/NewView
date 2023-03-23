@@ -32,8 +32,8 @@ function cargarTablaClientes(data) {
     let contenido = "";
     data.forEach((cliente, indice) => {
         let nc = cliente.persona.nombre + " " + cliente.persona.apellidoPaterno + " " + cliente.persona.apellidoMaterno;
-        let dc = cliente.persona.calle+" "+cliente.persona.numero+" "+cliente.persona.colonia+" "+cliente.persona.cp+" "+cliente.persona.ciudad+" "+cliente.persona.estado;
-        
+        let dc = cliente.persona.calle + " " + cliente.persona.numero + " " + cliente.persona.colonia + " " + cliente.persona.cp + " " + cliente.persona.ciudad + " " + cliente.persona.estado;
+
         contenido += "<tr>";
         contenido += "<td style='display:none;'>" + cliente.idCliente + "</td>"; //5
         contenido += "<td>" + nc + "</td>";
@@ -229,7 +229,14 @@ function generarVentaPresupuesto() {
                 if (data.error) {
                     alert(data.error);
                 } else if (data.result) {
-                    alert(data.result);
+                    limpiarE();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Venta Realizada exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 } else {
                     JSON.stringify(data);
                 }
@@ -265,10 +272,10 @@ function obtenerLente(indice) {
     let keratometria = Number(celdas[4].innerHTML);
     let fotografia = String(celdas[5].innerHTML);
     let pro = {idProducto: idProducto};
-    console.log("el id lenteContacto es "+ idLenteContacto);
-    console.log("el id producto lenteContacto es "+ idProducto);
-    console.log("la keratometria lenteContacto es "+ keratometria);
-    console.log("la fotografia es "+ fotografia);
+    console.log("el id lenteContacto es " + idLenteContacto);
+    console.log("el id producto lenteContacto es " + idProducto);
+    console.log("la keratometria lenteContacto es " + keratometria);
+    console.log("la fotografia es " + fotografia);
     let LenteContacto = {idLenteContacto: idLenteContacto, producto: pro, keratometria: keratometria, fotografia: fotografia};
 
     lenteSeleccionado = LenteContacto;
@@ -276,7 +283,23 @@ function obtenerLente(indice) {
 
 }
 
-window.addEventListener('load', function() {
-  document.getElementById('txtTotal').value = '';
+window.addEventListener('load', function () {
+    document.getElementById('txtTotal').value = '';
 });
 
+function limpiarE() {
+    document.getElementById("tbProducto").innerHTML = "";
+    document.getElementById("tbProducto2").innerHTML = "";
+    document.getElementById("tbProducto3").innerHTML = "";
+    document.getElementById("tbProducto4").innerHTML = "";
+    clientes = null;
+    examenes = null;
+    examenSeleccionado = null;
+    lenteSeleccionado = null;
+    productos = null;
+    lentes = null;
+    indexTV = 0;
+    document.getElementById("txtTotal").value = "";
+    document.getElementById("myInput").value = "";
+
+}

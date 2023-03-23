@@ -12,6 +12,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +98,7 @@ public class ControllerVentaLC {
             if (rs.next()) {
                 dvp.getVenta().setIdVenta(rs.getInt(1));
             }
-
+            PreparedStatement pstmt = null;
             for (int i = 0; i < dvp.getListaVentaPresupuestoLC().size(); i++) {
                 //Se inserta el presupuesto
                 String query3 = "INSERT INTO presupuesto"
@@ -135,10 +136,27 @@ public class ControllerVentaLC {
                         + dvp.getListaVentaPresupuestoLC().get(i).getPrecioUnitario() + ","
                         + dvp.getListaVentaPresupuestoLC().get(i).getDescuento() + ");";
                 stmnt.execute(query5);
+                String sqlActualizar = "UPDATE producto SET existencias = existencias - " + dvp.getListaVentaPresupuestoLC().get(i).getCantidad() + " WHERE producto.idProducto = " + dvp.getListaVentaPresupuestoLC().get(i).getPresupuestoLenteContacto().getLenteContacto().getProducto().getIdProducto() + ";";
+                System.out.println(sqlActualizar);
+                stmnt = conn.createStatement();
+                stmnt.executeUpdate(sqlActualizar);
+                // Verificar el inventario
+                String sqlVerificar = "SELECT existencias FROM producto WHERE idProducto = " + dvp.getListaVentaPresupuestoLC().get(i).getPresupuestoLenteContacto().getLenteContacto().getProducto().getIdProducto();
+                pstmt = conn.prepareStatement(sqlVerificar);
+                rs = pstmt.executeQuery();
+                while (rs.next()) {
+                    int existencias = rs.getInt("existencias");
+                    if (existencias <= 0) {
+                        String sqlEstatus = "UPDATE producto SET estatus = 0 WHERE idProducto = " + dvp.getListaVentaPresupuestoLC().get(i).getPresupuestoLenteContacto().getLenteContacto().getProducto().getIdProducto();
+                        stmnt = conn.createStatement();
+                        stmnt.execute(sqlEstatus);
+                    }
+                }
             }
             conn.commit();
             conn.setAutoCommit(true);
             stmnt.close();
+            pstmt.close();
             conn.close();
             r = true;
 
@@ -267,7 +285,7 @@ public class ControllerVentaLC {
             if (rs.next()) {
                 dvp.getVenta().setIdVenta(rs.getInt(1));
             }
-
+            PreparedStatement pstmt = null;
             //Se insertan varios presupuestos, por lo tanto se Cicla
             for (int i = 0; i < dvp.getListaVentaPresupuestoL().size(); i++) {
 
@@ -315,6 +333,22 @@ public class ControllerVentaLC {
                         + dvp.getListaVentaPresupuestoL().get(i).getPrecioUnitario() + ","
                         + dvp.getListaVentaPresupuestoL().get(i).getDescuento()+ ");";
                 stmt.execute(query4);
+                String sqlActualizar = "UPDATE producto SET existencias = existencias - " + dvp.getListaVentaPresupuestoL().get(i).getCantidad() + " WHERE producto.idProducto = " + dvp.getListaVentaPresupuestoL().get(i).getPresupuestoLente().getArmazon().getProducto().getIdProducto() + ";";
+                System.out.println(sqlActualizar);
+                stmt = conn.createStatement();
+                stmt.executeUpdate(sqlActualizar);
+                //verificar el inventario
+                String sqlVerificar = "SELECT existencias FROM producto WHERE idProducto = " + dvp.getListaVentaPresupuestoL().get(i).getPresupuestoLente().getArmazon().getProducto().getIdProducto();
+                pstmt = conn.prepareStatement(sqlVerificar);
+                rs = pstmt.executeQuery();
+                while (rs.next()) {
+                   int existencias = rs.getInt("existencias");
+                   if (existencias <= 0) {
+                       String sqlEstatus = "UPDATE producto SET estatus = 0 WHERE idProducto = " + dvp.getListaVentaPresupuestoL().get(i).getPresupuestoLente().getArmazon().getProducto().getIdProducto();
+                       stmt = conn.createStatement();
+                       stmt.execute(sqlEstatus);
+                   }
+                }
             }
 
             //Ya con todas las sentencias ejecutadas, se envia la conformación de ejecutar la transaccion

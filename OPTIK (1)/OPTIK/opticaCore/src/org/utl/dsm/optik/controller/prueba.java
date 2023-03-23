@@ -29,7 +29,7 @@ import org.utl.dsm.optik.model.ExamenVista;
 public class prueba {
 
     public static void main(String[] args) throws Exception {
-
+        probarConexion();
         //mostrar("21000012");
         //insertarAlumno();
         //probarCatalago(1);

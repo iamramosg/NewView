@@ -6,7 +6,7 @@ background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
     border-collapse: collapse;
     margin: 15px auto;
     font-size: 15px;
-    width: 350px;
+    width: 480px;
     border-radius: 30px 0px 30px 0px;
     overflow: hidden;
     box-shadow: 0px 0px 40px #cacaca;
@@ -18,7 +18,7 @@ background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
     border-collapse: collapse;
     margin: 30px auto;
     font-size: 15px;
-    width: 900px;
+    width: 1050px;
     border-radius: 30px 0px 30px 0px;
     overflow: hidden;
     box-shadow: 0px 0px 40px #cacaca;
@@ -70,4 +70,16 @@ h2{
 .sc-table2 tbody tr:hover{
     background-color: #cacaca;
     color: #FE303A;
+}
+
+
+
+.form-check-input[type=checkbox]:checked {
+  background-color: red;
+  border-color: black;
+}
+
+#contenedorTratamientos {
+  margin-top: 20px; 
+  margin-bottom: 20px;
 }
