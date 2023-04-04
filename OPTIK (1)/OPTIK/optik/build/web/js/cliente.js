@@ -24,7 +24,7 @@ function insertar(){
     
     let parametros = new URLSearchParams(cliente);
     
-        fetch("http://localhost:8080/optik/api/restoptik/insertCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/insertCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
                     Swal.fire({
@@ -84,7 +84,7 @@ function actualizar(){
     let cliente = {datosCliente:JSON.stringify(cl)};
     
     let parametros = new URLSearchParams(cliente);
-    fetch("http://localhost:8080/optik/api/restoptik/updateCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
+    fetch("../optik/api/restoptik/updateCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
                     Swal.fire({
@@ -100,7 +100,7 @@ function getAll(){
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos); // nuestro json lo convierte en un bloque de parametros, se usa para post
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllCliente", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+    fetch("../optik/api/restoptik/getAllCliente", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
 //                    console.log(data);
@@ -117,7 +117,7 @@ function getAll(){
     let datos = {estatus: 0};
     let parametros = new URLSearchParams(datos); // nuestro json lo convierte en un bloque de parametros, se usa para post
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllCliente", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+    fetch("../optik/api/restoptik/getAllCliente", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
 //                    console.log(data);
@@ -214,7 +214,7 @@ function eliminar(idCliente){
     
     let cliente = {datosCliente: JSON.stringify(c)};
     let parametros = new URLSearchParams(cliente);
-        fetch("http://localhost:8080/optik/api/restoptik/eliminarCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/eliminarCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
                     Swal.fire({
@@ -232,7 +232,7 @@ function activar(idCliente){
     
     let cliente = {datosCliente: JSON.stringify(c)};
     let parametros = new URLSearchParams(cliente);
-        fetch("http://localhost:8080/optik/api/restoptik/activarCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/activarCliente",{method:"POST",body:parametros,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}})
             .then(response => response.json())
             .then(data => {
                     Swal.fire({

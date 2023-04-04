@@ -5,7 +5,7 @@ function accesar(){
     let usuario = {datosAcceso: JSON.stringify({nombre: user, contrasenia: contrasenia})};
     
     const url = new URLSearchParams(usuario);
-    fetch('http://localhost:8080/optik/api/restoptik/acceder',
+    fetch('../optik/api/restoptik/acceder',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -27,7 +27,7 @@ function accesar(){
                          console.log("2 segundos esperado")
                      }, 2000);
                      
-                     window.location.href = "http://localhost:8080/optik/principal.html";
+                     window.location.href = "../optik/principal.html";
                      
                 }else{
                     Swal.fire({
@@ -38,11 +38,11 @@ function accesar(){
                     });
                 }
                 JSON.stringify(data);
-                limpiarForm();
+                limpiarForm2();
             });
 }
 
-function limpiarForm(){
+function limpiarForm2(){
     document.getElementById("usuario").value="";
     document.getElementById("contrasenia").value="";
 }
@@ -66,7 +66,7 @@ function validarAcceso()
 
     encriptar(password).then((textoEncriptado) => {
         
-        alert(textoEncriptado.toString());
+        //alert(textoEncriptado.toString());
         
         let usuario = {"usuario": JSON.stringify({"nombre": username, "contrasenia": textoEncriptado.toString()})};
 
@@ -76,7 +76,7 @@ function validarAcceso()
 
  
 
-        fetch("http://localhost:8080/optik/api/restoptik/in",
+        fetch("../optik/api/restoptik/in",
                 {method: "POST",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
                     body: params
@@ -105,7 +105,7 @@ function validarAcceso()
                     if (data.usuario.rol === 'Administrador')
                     {
                         localStorage.setItem('currentUser', JSON.stringify(data));
-                        window.location.href = "http://localhost:8080/optik/principal.html";
+                        window.location.href = "../optik/principal.html";
                     } else
                         Swal.fire('', 'Por el momento, solo los administradores tienen acceso al sistema.', 'warning');
                 });
@@ -124,11 +124,11 @@ function accesar2() {
 
 
     encriptar(contrasenia).then((textoEncriptado) => {
-        alert(textoEncriptado.toString());
+        //alert(textoEncriptado.toString());
         let usuario = {datosAcceso: JSON.stringify({nombre: user, contrasenia: textoEncriptado.toString()})};
 
         const url = new URLSearchParams(usuario);
-        fetch('http://localhost:8080/optik/api/restoptik/acceder',
+        fetch('../optik/api/restoptik/acceder',
                 {
                     method: "POST",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -151,7 +151,7 @@ function accesar2() {
                             console.log("2 segundos esperado");
                         }, 2000);
 
-                        window.location.href = "http://localhost:8080/optik/principal.html";
+                        window.location.href = "../optik/principal.html";
 
                     } else {
                         Swal.fire({
@@ -162,7 +162,7 @@ function accesar2() {
                         });
                     }
                     JSON.stringify(data);
-                    limpiarForm();
+                    limpiarForm2();
                 });
     });
 
@@ -175,7 +175,7 @@ function logOut(){
     let usuario = {empleado:token};
     
     const url = new URLSearchParams(usuario);
-          fetch('http://localhost:8080/optik/api/restoptik/out',
+          fetch('../optik/api/restoptik/out',
                 {
                     method: "POST",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

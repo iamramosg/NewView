@@ -20,7 +20,7 @@ function getAllCliente() {
     let datos = {filtro: busqueda};
     let parametros = new URLSearchParams(datos);
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllCliente2", {
+    fetch("../optik/api/restoptik/getAllCliente2", {
         method: "POST",
         body: parametros,
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
@@ -63,7 +63,7 @@ function getAllExamenVista() {
     let datos = {id: idCliente};
     let parametros = new URLSearchParams(datos);
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllExamenVista", {
+    fetch("../optik/api/restoptik/getAllExamenVista", {
         method: "POST",
         body: parametros,
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
@@ -107,7 +107,7 @@ function getAllExamenVista() {
 }
 //get All tipo micas
 function getAllTipoMica() {
-    fetch("http://localhost:8080/optik/api/restoptik/getAllMica", {
+    fetch("../optik/api/restoptik/getAllMica", {
         method: "POST",
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
     })
@@ -153,7 +153,7 @@ function getAllArmazon() {
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllArmazon',
+    fetch('../optik/api/restoptik/getAllArmazon',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -200,7 +200,7 @@ function getAllTratamiento() {
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllTratamiento', {
+    fetch('../optik/api/restoptik/getAllTratamiento', {
         method: "POST",
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
         body: parametros
@@ -265,7 +265,7 @@ function getAllMateriales() {
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllM',
+    fetch('../optik/api/restoptik/getAllM',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -454,7 +454,7 @@ function realizarVenta() {
     let detalleVentaPresupuesto = {datos: JSON.stringify({venta: venta, listaVentaPresupuestoL: ventaPresupuestoLCList})};
 
     let parametros = new URLSearchParams(detalleVentaPresupuesto);
-    fetch("http://localhost:8080/optik/api/restoptik/ventaLente",
+    fetch("../optik/api/restoptik/ventaLente",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

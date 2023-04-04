@@ -11,7 +11,7 @@ function getAllCliente() {
     let datos = {filtro: busqueda};
     let parametros = new URLSearchParams(datos);
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllCliente2", {
+    fetch("../optik/api/restoptik/getAllCliente2", {
         method: "POST",
         body: parametros,
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
@@ -54,7 +54,7 @@ function getAllExamenVista() {
     let datos = {id: idCliente};
     let parametros = new URLSearchParams(datos);
 
-    fetch("http://localhost:8080/optik/api/restoptik/getAllExamenVista", {
+    fetch("../optik/api/restoptik/getAllExamenVista", {
         method: "POST",
         body: parametros,
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
@@ -90,7 +90,7 @@ function cargarTablaExamen(data) {
 }
 
 function getAllLenteContacto() {
-    fetch("http://localhost:8080/optik/api/restoptik/getAllLenteContacto", {
+    fetch("../optik/api/restoptik/getAllLenteContacto", {
         method: "POST",
         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
     })
@@ -218,7 +218,7 @@ function generarVentaPresupuesto() {
     const detalleVentaPresupuesto = {datos: JSON.stringify({venta: venta, listaVentaPresupuestoLC: listaVP})};
 
     let parametros = new URLSearchParams(detalleVentaPresupuesto);
-    fetch('http://localhost:8080/optik/api/restoptik/ventaLC',
+    fetch('../optik/api/restoptik/ventaLC',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

@@ -11,7 +11,7 @@ function insertar() {
     const graduacion = {datosGraduacion: JSON.stringify({esferaod: esferaod, esferaoi: esferaoi, cilindrood: cilindrood, cilindrooi: cilindrooi, ejeod: ejeod, ejeoi: ejeoi, dip: dip})};
 
     const url = new URLSearchParams(graduacion);
-    fetch('http://localhost:8080/optik/api/restoptik/guardarGraduacion',
+    fetch('../optik/api/restoptik/guardarGraduacion',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -44,7 +44,7 @@ function actualizar() {
     const graduacion = {datosGraduacion: JSON.stringify({idGraduacion: idGraduacion, esferaod: esferaod, esferaoi: esferaoi, cilindrood: cilindrood, cilindrooi: cilindrooi, ejeod: ejeod, ejeoi: ejeoi, dip: dip})};
 
     let parametros = new URLSearchParams(graduacion);
-    fetch("http://localhost:8080/optik/api/restoptik/updateGraduacion",
+    fetch("../optik/api/restoptik/updateGraduacion",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -77,7 +77,7 @@ function getAll() {
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllGraduacion',
+    fetch('../optik/api/restoptik/getAllGraduacion',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -98,7 +98,7 @@ function getAllInactivos() {
     let datos = {estatus: 0};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllGraduacion',
+    fetch('../optik/api/restoptik/getAllGraduacion',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -164,7 +164,7 @@ function eliminar(i) {
     const graduacion = {idGraduacion};
 
     let parametros = new URLSearchParams(graduacion);
-    fetch("http://localhost:8080/optik/api/restoptik/eliminarGraduacion",
+    fetch("../optik/api/restoptik/eliminarGraduacion",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -198,7 +198,7 @@ function agregar(i) {
     const graduacion = {idGraduacion};
 
     let parametros = new URLSearchParams(graduacion);
-    fetch("http://localhost:8080/optik/api/restoptik/agregarGraduacion",
+    fetch("../optik/api/restoptik/agregarGraduacion",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

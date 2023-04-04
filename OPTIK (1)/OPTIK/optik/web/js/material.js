@@ -10,7 +10,7 @@ function insertar() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let mat = JSON.parse(localStorage.getItem("currentUser"));
@@ -33,7 +33,7 @@ function insertar() {
 
 
         let parametros = new URLSearchParams(material);
-        fetch("http://localhost:8080/optik/api/restoptik/insertarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/insertarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     Swal.fire({
@@ -53,7 +53,7 @@ function insertar() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href= "http://localhost:8080/optik/login.html";
+        window.location.href= "../optik/login.html";
     }
 }
 function actualizar() {
@@ -65,7 +65,7 @@ function actualizar() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let mat = JSON.parse(localStorage.getItem("currentUser"));
@@ -86,7 +86,7 @@ function actualizar() {
 
         let parametros = new URLSearchParams(material);
 
-        fetch("http://localhost:8080/optik/api/restoptik/updateMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/updateMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     Swal.fire({
@@ -106,7 +106,7 @@ function actualizar() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href= "http://localhost:8080/optik/login.html";        
+        window.location.href= "../optik/login.html";        
     }
 }
 function getAllM() {
@@ -118,7 +118,7 @@ function getAllM() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let mat = JSON.parse(localStorage.getItem("currentUser"));
@@ -126,7 +126,7 @@ function getAllM() {
         let datos = {estatus: 1, lastToken: lToken};
         let parametros = new URLSearchParams(datos);
 
-        fetch("http://localhost:8080/optik/api/restoptik/getAllMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/getAllMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     //                   console.log(data);
@@ -145,7 +145,7 @@ function getAllM() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href= "http://localhost:8080/optik/login.html"; 
+        window.location.href= "../optik/login.html"; 
     }
 }
 function getAllInactivosM() {
@@ -157,7 +157,7 @@ function getAllInactivosM() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let mat = JSON.parse(localStorage.getItem("currentUser"));
@@ -165,7 +165,7 @@ function getAllInactivosM() {
         let datos = {estatus: 0, lastToken: lToken};
         let parametros = new URLSearchParams(datos);
 
-        fetch("http://localhost:8080/optik/api/restoptik/getAllMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/getAllMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     //                   console.log(data);
@@ -184,7 +184,7 @@ function getAllInactivosM() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
 }
 function cargarTablaMaterial(coincidencias, data) {
@@ -234,14 +234,14 @@ function activar(idMaterial) {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let m = {idMaterial: idMaterial};
 
         let material = {datosMaterial: JSON.stringify(m)};
         let parametros = new URLSearchParams(material);
-        fetch("http://localhost:8080/optik/api/restoptik/activarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/activarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     Swal.fire({
@@ -261,7 +261,7 @@ function activar(idMaterial) {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
 }
 function eliminar(idMaterial) {
@@ -273,14 +273,14 @@ function eliminar(idMaterial) {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         let m = {idMaterial: idMaterial};
 
         let material = {datosMaterial: JSON.stringify(m)};
         let parametros = new URLSearchParams(material);
-        fetch("http://localhost:8080/optik/api/restoptik/eliminarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
+        fetch("../optik/api/restoptik/eliminarMaterial", {method: "POST", body: parametros, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}})
                 .then(response => response.json())
                 .then(data => {
                     Swal.fire({
@@ -301,7 +301,7 @@ function eliminar(idMaterial) {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
 }
 function Rbusqueda() {
@@ -313,7 +313,7 @@ function Rbusqueda() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
     if (localStorage.getItem("currentUser") !== "") {
         const busqueda = document.getElementById("myInput").value;
@@ -335,7 +335,7 @@ function Rbusqueda() {
             showConfirmButton: false,
             timer: 1500
         });
-        window.location.href = "http://localhost:8080/optik/login.html";
+        window.location.href = "../optik/login.html";
     }
 }
 

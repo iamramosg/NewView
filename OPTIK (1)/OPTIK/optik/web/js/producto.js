@@ -6,7 +6,7 @@ function getAllProducto() {
   let datos = {estatus: busqueda};
   let parametros = new URLSearchParams(datos);
 
-  fetch("http://localhost:8080/optik/api/restoptik/getAllProducto", {
+  fetch("../optik/api/restoptik/getAllProducto", {
     method: "POST",
     body: parametros,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
@@ -139,7 +139,7 @@ function generarVenta() {
     const detalleVentaProducto = {datos: JSON.stringify({venta: venta, listaVP: listaVP})};
 
     let parametros = new URLSearchParams(detalleVentaProducto);
-    fetch('http://localhost:8080/optik/api/restoptik/ventaProducto',
+    fetch('../optik/api/restoptik/ventaProducto',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

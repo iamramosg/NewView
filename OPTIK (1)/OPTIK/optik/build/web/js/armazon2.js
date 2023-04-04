@@ -20,7 +20,7 @@ function insertar() {
 
 
     const url = new URLSearchParams(armazon);
-    fetch('http://localhost:8080/optik/api/restoptik/guardarArmazon',
+    fetch('../optik/api/restoptik/guardarArmazon',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -60,7 +60,7 @@ function actualizar() {
     const armazon = {datosArmazon: JSON.stringify({idArmazon: idArmazon, producto: producto, modelo: modelo, color: color, dimensiones: dimensiones, descripcion: descripcion, fotografia: fotografia})};
 
     let parametros = new URLSearchParams(armazon);
-    fetch("http://localhost:8080/optik/api/restoptik/updateArmazon",
+    fetch("../optik/api/restoptik/updateArmazon",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -94,7 +94,7 @@ function eliminar(i) {
     const armazon = {idArmazon};
 
     let parametros = new URLSearchParams(armazon);
-    fetch("http://localhost:8080/optik/api/restoptik/eliminarArmazon",
+    fetch("../optik/api/restoptik/eliminarArmazon",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -128,7 +128,7 @@ function agregar(i) {
     const armazon = {idArmazon};
 
     let parametros = new URLSearchParams(armazon);
-    fetch("http://localhost:8080/optik/api/restoptik/agregarArmazon",
+    fetch("../optik/api/restoptik/agregarArmazon",
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -160,7 +160,7 @@ function getAll() {
     let datos = {estatus: 1};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllArmazon',
+    fetch('../optik/api/restoptik/getAllArmazon',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -180,7 +180,7 @@ function getAllInactivos() {
     let datos = {estatus: 0};
     let parametros = new URLSearchParams(datos);
 
-    fetch('http://localhost:8080/optik/api/restoptik/getAllArmazon',
+    fetch('../optik/api/restoptik/getAllArmazon',
             {
                 method: "POST",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},

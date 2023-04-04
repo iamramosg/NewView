@@ -35,7 +35,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="armazon2.html">Armazones</a></li>
-                                    <li><a class="dropdown-item" href="actualizarCliente.html">Accesorios</a></li>
+                                    
                                     <li><hr class="dropdown-divider"></li>
                                 </ul>
 
@@ -48,7 +48,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="ventaPresupuesto.html">Lentes Contacto</a></li>
                                     <li><a class="dropdown-item" href="ventaLente.html">Lentes</a></li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="venta.html">Productos</a></li>
+
                                 </ul>
 
 
@@ -70,62 +71,15 @@
         <div class="container mt-5 mb-5">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="text-center">Gesti&oacute;n Ventas</h2>
+                    <h2 class="text-center">Productos</h2>
                 </div>                
-                <div class="card-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-6">
-                                <label class="form-label">Clave Unica:</label><br>
-                                <input type="number" id="txtClaveUnica" class="form-control"><br>
-                            </div>  
-                            <div class="col-6">
-                                <label class="form-label">Fecha y hora:</label><br>
-                                <input type="datetime-local" id="txtNombre" class="form-control"><br>
-                            </div>
-                        </div>
-                        <div class="row"> 
-                            <div class="col-12">
-                                <label class="form-label">Datos Cliente:</label><br>
-                                <input type="number" id="txtDatosCliente" class="form-control"><br>
-                            </div> 
-                        </div>
-                        <div>
-                            <div class="col-12">
-                                <label class="form-label">Datos Empleado:</label><br>
-                                <input type="number" id="txtDatosEmpleado" class="form-control"><br>
-                            </div>                            
-                        </div>
-                        <div class="row"> 
-                            <div class="col-6">
-                                <label class="form-label">Detalle Venta:</label><br>
-                                <input type="text" id="txtDetalleVenta" class="form-control"><br>
-                            </div> 
-                            <div class="col-6">
-                                <label class="form-label">Descuento:</label><br>
-                                <input type="number" id="txtDescuento" class="form-control"><br>
-                            </div>                             
-                        </div>                        
+                <div class="container-fluid row">
+
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Buscar"  aria-label="Buscar" id="myInput" onkeyup="myInput">
+                        <button class="btn btn-outline-danger m-3" type="button" onclick="getAllProducto()">Buscar</button>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <center>
-                        <button type="submit" class="btn btn-outline-danger m-3 " onclick="insertar()">Guardar</button>
-                        <button type="submit" class="btn btn-outline-danger m-3 " onclick="actualizar()">Actualizar</button>
-                        <button type="submit" class="btn btn-outline-danger m-3 " onclick="limpiarForm2()">Limpiar</button>                         
-                    </center>
-                </div>  
-                <div class="row">
-                    <div class="col-4">
-                        <button type="button" class="btn btn-outline-secondary m-3" onclick="generarVenta()">Venta</button>
-                        <button type="button" class="btn btn-outline-secondary m-3" onclick="getAllInactivosM()">Inactivos</button>
-                    </div>
-                    <div class="col-8">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Buscar"  aria-label="Buscar" id="myInput" onkeyup="myInput">
-                            <button class="btn btn-outline-danger m-3" type="button" onclick="getAllProducto()">Buscar</button>
-                        </form>
-                    </div>
+
                 </div>
                 <div>
 
@@ -159,14 +113,17 @@
 
                         </tbody>
                     </table>
-                    
+
                 </div> 
-                <div class="row">
-                    <div class="col-6">
+                <div class="card-footer">
+                    <center>
                         <label class="form-label">Total:</label><br>
                         <input type="number" id="txtTotal" class="form-control" disabled><br>
-                    </div> 
+
+                        <button type="button" class="btn btn-outline-danger m-3" onclick="generarVenta()">Guardar</button>
+                    </center>
                 </div>
+            </div>
         </div>
 
     </body>
