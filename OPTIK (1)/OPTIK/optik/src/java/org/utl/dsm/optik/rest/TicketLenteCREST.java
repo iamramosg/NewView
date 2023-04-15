@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.utl.dsm.optik.rest;
 
 import com.google.gson.Gson;
@@ -15,31 +11,29 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 import org.utl.dsm.optik.controller.ControllerTickets;
-import org.utl.dsm.optik.model.TicketProducto;
+import org.utl.dsm.optik.model.TicketLenteC;
 
 /**
  *
  * @author iamra
  */
 @Path("restoptik")
-public class TicketProductoREST extends Application{
+public class TicketLenteCREST extends Application {
 
-    @Path("getAllTicketP")
+    @Path("getAllTicketLC")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllTicketP(@FormParam("filtro") @DefaultValue("") String filtro, @FormParam("orden") @DefaultValue("desc") String orden) {
+    public Response getAllTicketLC(@FormParam("filtro") @DefaultValue("") String filtro, @FormParam("orden") @DefaultValue("desc") String orden) {
         String out = "";
         Gson gson = new Gson();
         try {
             ControllerTickets objTK = new ControllerTickets();
-            List<TicketProducto> ticketProductos;
-            ticketProductos = objTK.getAllP(filtro, orden);
-            out = gson.toJson(ticketProductos);
+            List<TicketLenteC> ticketLentesC;
+            ticketLentesC = objTK.getAllLC(filtro, orden);
+            out = gson.toJson(ticketLentesC);
         } catch (Exception ex) {
             out = "{\"error\":" + ex.toString() + "}";
-
         }
         return Response.status(Response.Status.OK).entity(out).build();
-
     }
 }

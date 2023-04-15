@@ -452,6 +452,7 @@ function realizarVenta() {
 
     //-------Hacer objeto DetalleVentaPresupuesto -------------------------------------------
     let detalleVentaPresupuesto = {datos: JSON.stringify({venta: venta, listaVentaPresupuestoL: ventaPresupuestoLCList})};
+    console.log(detalleVentaPresupuesto);
 
     let parametros = new URLSearchParams(detalleVentaPresupuesto);
     fetch("../optik/api/restoptik/ventaLente",

@@ -18,13 +18,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.utl.dsm.optik.model.TicketProducto;
+import org.utl.dsm.optik.model.TicketLente;
+import org.utl.dsm.optik.model.TicketLenteC;
 /**
  *
  * @author iamra
  */
 public class ControllerTickets {
-        public List<TicketProducto> getAllP(String filtro) throws SQLException {
-        String query = "SELECT * from view_ventap WHERE empleado = '" + filtro + "' or apellidoPaterno = '" + filtro + "' or apellidoMaterno = '" + filtro + "' or clave = '" + filtro + "';";
+        public List<TicketProducto> getAllP(String filtro, String orden) throws SQLException {
+        String query = "SELECT * from venta_productos WHERE empleado = '" + filtro + "' or apellidoPaterno = '" + filtro + "' or apellidoMaterno = '" + filtro + "' or clave = '" + filtro + "' order by totalClave " + orden + ";";
 
         ConexionMySQL objConexion = new ConexionMySQL();
         // Abro la conexion
@@ -53,5 +55,138 @@ public class ControllerTickets {
         pstmt.close();
         conn.close();
         return ticketProductos;
+    }
+        
+    public List<TicketLente> getAllL(String filtro, String orden) throws SQLException{
+        String query = "SELECT * from venta_lente WHERE nombre = '" + filtro + "' or apellidoPaterno = '" + filtro + "' or apellidoMaterno = '" + filtro + "' or claveV = '" + filtro + "' or nombrec = '" + filtro + "' or apellidoPaternoC = '" + filtro + "' or apellidoMaternoC = '" + filtro + "' or nombreM = '" + filtro + "' or nombreA = '" + filtro + "' or marca = '" + filtro + "' or claveEV = '" + filtro + "' order by totalClave " + orden + ";";
+        ConexionMySQL objConexion = new ConexionMySQL();
+        // Abro la conexion
+        Connection conn = objConexion.open();
+        // Preparo el envio
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        
+        List<TicketLente> ticketLentes= new ArrayList<>();
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()){
+            TicketLente tkl = new TicketLente();
+             //empleado
+            tkl.setNombreE(rs.getString("nombre"));
+            tkl.setApellidoPaternoE(rs.getString("apellidoPaterno"));
+            tkl.setApellidoMaternoE(rs.getString("apellidoMaterno"));
+            tkl.setNumeroUnicoE(rs.getString("numeroUnicoE"));
+            
+            //Cliente 
+            tkl.setNombreC(rs.getString("nombrec"));
+            tkl.setApellidoPaternoC(rs.getString("apellidoPaternoC"));
+            tkl.setApellidoMaternoC(rs.getString("apellidoMaternoC"));
+            tkl.setNumeroUnicoC(rs.getString("numeroUnicoC"));
+            
+             //Venta
+            tkl.setClaveV(rs.getString("claveV"));
+            
+             //Material
+            tkl.setNombreM(rs.getString("nombreM"));
+            
+             //Armazon
+            tkl.setNombreA(rs.getString("nombreA"));
+            tkl.setMarca(rs.getString("marca"));
+            
+             //Tipo Mica
+            tkl.setNombreTP(rs.getString("nombreTP"));
+            
+            //Examen Vista
+            tkl.setClaveEV(rs.getString("claveEV"));
+            // Obtener la fecha como un objeto Timestamp
+            Timestamp timestamp = rs.getTimestamp("fecha");
+            // Convertir el objeto Timestamp a un objeto Date
+            Date date = new Date(timestamp.getTime());
+            // Crear un objeto SimpleDateFormat con el patrón "yyyy-MM-dd"
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            // Formatear la fecha Date con el objeto SimpleDateFormat y obtener el String resultante
+            String fechaFormateada = dateFormat.format(date);
+            // Establecer la fecha formateada en el objeto Ticket venta de lentes
+            tkl.setFecha(fechaFormateada);
+            
+            //Tratamiento
+//            tkl.setNombreT(rs.getString("nombreT"));
+            
+            
+            //Presupuesto Lentes
+            tkl.setCantidad(rs.getInt("cantidadVP"));
+            tkl.setPrecioUnitario(rs.getDouble("precioUnitarioVP"));
+            tkl.setDescuento(rs.getDouble("descuentoVP"));
+            
+            ticketLentes.add(tkl);
+        }
+        rs.close();
+        pstmt.close();
+        conn.close();
+        return ticketLentes;
+    }
+    public List<TicketLenteC> getAllLC(String filtro, String orden) throws SQLException{
+        String query = "SELECT * from venta_lenteC WHERE nombre = '" + filtro + "' or apellidoPaterno = '" + filtro + "' or apellidoMaterno = '" + filtro + "' or claveV = '" + filtro + "' or nombrec = '" + filtro + "' or apellidoPaternoC = '" + filtro + "' or apellidoMaternoC = '" + filtro + "' or marca = '" + filtro + "' or claveEV = '" + filtro + "' order by totalClave  " + orden + ";";
+        ConexionMySQL objConexion = new ConexionMySQL();
+        // Abro la conexion
+        Connection conn = objConexion.open();
+        // Preparo el envio
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        
+        List<TicketLenteC> ticketLentesC= new ArrayList<>();
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()){
+            TicketLenteC tkl = new TicketLenteC();
+             //empleado
+            tkl.setNombreE(rs.getString("nombre"));
+            tkl.setApellidoPaternoE(rs.getString("apellidoPaterno"));
+            tkl.setApellidoMaternoE(rs.getString("apellidoMaterno"));
+            tkl.setNumeroUnicoE(rs.getString("numeroUnicoE"));
+            
+            //Cliente 
+            tkl.setNombreC(rs.getString("nombrec"));
+            tkl.setApellidoPaternoC(rs.getString("apellidoPaternoC"));
+            tkl.setApellidoMaternoC(rs.getString("apellidoMaternoC"));
+            tkl.setNumeroUnicoC(rs.getString("numeroUnicoC"));
+            
+             //Venta
+            tkl.setClaveV(rs.getString("claveV"));
+            
+            //Examen Vista
+            tkl.setClaveEV(rs.getString("claveEV"));
+            // Obtener la fecha como un objeto Timestamp
+            Timestamp timestamp = rs.getTimestamp("fecha");
+            // Convertir el objeto Timestamp a un objeto Date
+            Date date = new Date(timestamp.getTime());
+            // Crear un objeto SimpleDateFormat con el patrón "yyyy-MM-dd"
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            // Formatear la fecha Date con el objeto SimpleDateFormat y obtener el String resultante
+            String fechaFormateada = dateFormat.format(date);
+            // Establecer la fecha formateada en el objeto Ticket venta de lentes
+            tkl.setFecha(fechaFormateada);
+
+            //Presupuesto Lentes
+            tkl.setCantidad(rs.getInt("cantidadVP"));
+            tkl.setPrecioUnitario(rs.getDouble("precioUnitarioVP"));
+            tkl.setDescuento(rs.getDouble("descuentoVP"));
+            
+            //Graduacion
+            tkl.setEsferaod(rs.getDouble("esferaod"));
+            tkl.setEsferaoi(rs.getDouble("esferaoi"));
+            tkl.setCilindrood(rs.getInt("cilindrood"));
+            tkl.setCilindrooi(rs.getInt("cilindrooi"));
+            tkl.setEjeod(rs.getInt("ejeod"));
+            tkl.setEjeoi(rs.getInt("ejeoi"));
+            tkl.setDip(rs.getString("dip"));
+            
+            //Lente Contacto
+            tkl.setKeratometria(rs.getInt("keratometria"));
+            tkl.setNombreP(rs.getString("nombreP"));
+            tkl.setMarca(rs.getString("marca"));
+            
+            ticketLentesC.add(tkl);
+        }
+        rs.close();
+        pstmt.close();
+        conn.close();
+        return ticketLentesC;
     }
 }

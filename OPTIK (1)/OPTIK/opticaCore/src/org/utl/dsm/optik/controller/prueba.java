@@ -22,6 +22,8 @@ import org.utl.dsm.optik.model.Cliente;
 import org.utl.dsm.optik.model.Evaluacion;
 import org.utl.dsm.optik.model.ExamenVista;
 import org.utl.dsm.optik.model.TicketProducto;
+import org.utl.dsm.optik.model.TicketLente;
+import org.utl.dsm.optik.model.TicketLenteC;
 
 /**
  *
@@ -30,7 +32,7 @@ import org.utl.dsm.optik.model.TicketProducto;
 public class prueba {
 
     public static void main(String[] args) throws Exception {
-        probarCatalago("OQ-83544494");
+        probarCatalago("Ramos", "asc");
         //mostrar("21000012");
         //insertarAlumno();
         //probarCatalago(1);
@@ -43,15 +45,15 @@ public class prueba {
     }
 
 
-    public static void probarCatalago(String filtro) {
+    public static void probarCatalago(String filtro, String orden) {
         // Paso 1 invocar el controlador 
         ControllerTickets objTK= new ControllerTickets();
         try {
             // Paso 2 invocar el metodo
-            List<TicketProducto> ticketProductos= objTK.getAllP(filtro);
+            List<TicketLente> ticketLentes= objTK.getAllL(filtro, orden);
             // recorrer y mostrar los resultados
-            for (int i = 0; i <ticketProductos.size(); i++) {
-                System.out.println(ticketProductos.get(i).toString());
+            for (int i = 0; i <ticketLentes.size(); i++) {
+                System.out.println(ticketLentes.get(i).toString());
             }
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
