@@ -1,4 +1,4 @@
-function callFunction(){
+function llamarGetAll(){
     let opcion = parseInt(document.getElementById("slcAlumno").value);
     console.log(opcion);
     if(opcion === 1){
@@ -13,21 +13,25 @@ var boton = document.getElementById("boton");
 var estado = "ascendente";
 
 boton.classList.add("btn-success");
+boton.innerHTML = "&#8593; Asc";
 boton.value = "Asc";
 boton.addEventListener("click", function () {
     if (estado === "ascendente") {
         console.log(document.getElementById("boton").value);
         boton.classList.remove("btn-success");
         boton.classList.add("btn-danger");
+        boton.innerHTML = "&#8595; Desc";
         boton.value = "Desc";
         estado = "descendente";
     } else {
         console.log(document.getElementById("boton").value);
         boton.classList.remove("btn-danger");
         boton.classList.add("btn-success");
+        boton.innerHTML = "&#8593; Asc";
         boton.value = "Asc";
         estado = "ascendente";
     }
+    llamarGetAll();
 });
 function getAllTicketP() {
     let filtro = document.getElementById("txtMateria").value;
@@ -168,8 +172,6 @@ function generarTarjetasP(tickets) {
             descuento.style.color = "black";
             fila.appendChild(descuento);
 
-
-
             tabla.appendChild(fila);
         });
         const t = document.createElement("p");
@@ -264,10 +266,6 @@ function generarTarjetasL(tickets) {
         empleado.textContent = "Empleado: " + ticketsPorClave[clave][0].nombreE + " " + ticketsPorClave[clave][0].apellidoPaternoE + " " + ticketsPorClave[clave][0].apellidoMaternoE;
         empleado.style.color = "black";
 
-//        const numeroUnicoE = document.createElement("p");
-//        numeroUnicoE.textContent = "Numero Empleado: " + ticketsPorClave[clave][0].numeroUnicoE;
-//        numeroUnicoE.style.color = "black";
-
         const cliente = document.createElement("p");
         cliente.textContent = "Cliente: " + ticketsPorClave[clave][0].nombreC + " " + ticketsPorClave[clave][0].apellidoPaternoC + " " + ticketsPorClave[clave][0].apellidoMaternoC;
         cliente.style.color = "black";
@@ -276,16 +274,9 @@ function generarTarjetasL(tickets) {
         fechaExamen.textContent = "Fecha examen: " + ticketsPorClave[clave][0].fecha;
         fechaExamen.style.color = "black";
 
-//        const numeroUnicoC = document.createElement("p");
-//        numeroUnicoC.textContent = "Numero Cliente: " + ticketsPorClave[clave][0].numeroUnicoC;
-//        numeroUnicoC.style.color = "black";
-
-
         tarjeta.appendChild(empleado);
-//        tarjeta.appendChild(numeroUnicoE);
         tarjeta.appendChild(cliente);
         tarjeta.appendChild(fechaExamen);
-//        tarjeta.appendChild(numeroUnicoC);
 
         //crear la tabla y encabezados
         const tabla = document.createElement("table");
@@ -305,11 +296,6 @@ function generarTarjetasL(tickets) {
         tipoMicaEncabezado.textContent = "Mica";
         tipoMicaEncabezado.style.color = "black";
         encabezados.appendChild(tipoMicaEncabezado);
-        
-//        const tratamientoEncabezado = document.createElement("th");
-//        tratamientoEncabezado.textContent = "Tratamiento";
-//        tratamientoEncabezado.style.color = "black";
-//        encabezados.appendChild(tratamientoEncabezado);
 
         const cantidadEncabezado = document.createElement("th");
         cantidadEncabezado.textContent = "Cantidad";
@@ -350,11 +336,6 @@ function generarTarjetasL(tickets) {
             tipoMica.textContent = ticket.nombreTP;
             tipoMica.style.color = "black";
             fila.appendChild(tipoMica);    
-            
-//            const tratamiento = document.createElement("td");
-//            tratamiento.textContent = ticket.nombreT;
-//            tratamiento.style.color = "black";
-//            fila.appendChild(tratamiento); 
 
             const cantidad = document.createElement("td");
             cantidad.textContent = ticket.cantidad;
@@ -370,8 +351,6 @@ function generarTarjetasL(tickets) {
             descuento.textContent = ticket.descuento + "%";
             descuento.style.color = "black";
             fila.appendChild(descuento);
-
-
 
             tabla.appendChild(fila);
         });
@@ -461,11 +440,6 @@ function generarTarjetasLC(tickets) {
         empleado.textContent = "Empleado: " + ticketsPorClave[clave][0].nombreE + " " + ticketsPorClave[clave][0].apellidoPaternoE + " " + ticketsPorClave[clave][0].apellidoMaternoE;
         empleado.style.color = "black";
         
-//
-//        const numeroUnicoE = document.createElement("p");
-//        numeroUnicoE.textContent = "Numero Empleado: " + ticketsPorClave[clave][0].numeroUnicoE;
-//        numeroUnicoE.style.color = "black";
-
         const cliente = document.createElement("p");
         cliente.textContent = "Cliente: " + ticketsPorClave[clave][0].nombreC + " " + ticketsPorClave[clave][0].apellidoPaternoC + " " + ticketsPorClave[clave][0].apellidoMaternoC;
         cliente.style.color = "black";
@@ -473,11 +447,6 @@ function generarTarjetasLC(tickets) {
         const fechaExamen = document.createElement("p");
         fechaExamen.textContent = "Fecha examen: " + ticketsPorClave[clave][0].fecha;
         fechaExamen.style.color = "black";       
-
-//        const numeroUnicoC = document.createElement("p");
-//        numeroUnicoC.textContent = "Numero Cliente: " + ticketsPorClave[clave][0].numeroUnicoC;
-//        numeroUnicoC.style.color = "black";
-
 
         tarjeta.appendChild(empleado);
 //        tarjeta.appendChild(numeroUnicoE);
@@ -498,27 +467,7 @@ function generarTarjetasLC(tickets) {
         keratometriaEncabezado.textContent = "Keratometria";
         keratometriaEncabezado.style.color = "black";
         encabezados.appendChild(keratometriaEncabezado);
-        
-//        const esferaEncabezado = document.createElement("th");
-//        esferaEncabezado.textContent = "Esfera";
-//        esferaEncabezado.style.color = "black";
-//        encabezados.appendChild(esferaEncabezado);     
-//        
-//        const cilindroEncabezado = document.createElement("th");
-//        cilindroEncabezado.textContent = "Cilindro";
-//        cilindroEncabezado.style.color = "black";
-//        encabezados.appendChild(cilindroEncabezado);      
-//        
-//        const ejeEncabezado = document.createElement("th");
-//        ejeEncabezado.textContent = "Eje";
-//        ejeEncabezado.style.color = "black";
-//        encabezados.appendChild(ejeEncabezado);    
-//        
-//        const dipEncabezado = document.createElement("th");
-//        dipEncabezado.textContent = "Dip";
-//        dipEncabezado.style.color = "black";
-//        encabezados.appendChild(dipEncabezado);        
-
+       
         const cantidadEncabezado = document.createElement("th");
         cantidadEncabezado.textContent = "Cantidad";
         cantidadEncabezado.style.color = "black";
@@ -552,27 +501,7 @@ function generarTarjetasLC(tickets) {
             const keratometria = document.createElement("td");
             keratometria.textContent = ticket.keratometria;
             keratometria.style.color = "black";
-            fila.appendChild(keratometria);
-            
-//            const esfera = document.createElement("td");
-//            esfera.textContent = "Der: "+ ticket.esferaod + " Izq: " + ticket.esferaoi;
-//            esfera.style.color = "black";
-//            fila.appendChild(esfera);       
-//            
-//            const cilindro = document.createElement("td");
-//            cilindro.textContent = "Der: "+ ticket.cilindrood + " Izq: " + ticket.cilindrooi;
-//            cilindro.style.color = "black";
-//            fila.appendChild(cilindro);  
-//            
-//            const eje = document.createElement("td");
-//            eje.textContent = "Der: "+ ticket.ejeod + " Izq: " + ticket.ejeoi;
-//            eje.style.color = "black";
-//            fila.appendChild(eje);
-//            
-//            const dip = document.createElement("td");
-//            dip.textContent = ticket.dip;
-//            dip.style.color = "black";
-//            fila.appendChild(dip);            
+            fila.appendChild(keratometria);      
 
             const cantidad = document.createElement("td");
             cantidad.textContent = ticket.cantidad;
@@ -588,8 +517,6 @@ function generarTarjetasLC(tickets) {
             descuento.textContent = ticket.descuento + "%";
             descuento.style.color = "black";
             fila.appendChild(descuento);
-
-
 
             tabla.appendChild(fila);
         });
